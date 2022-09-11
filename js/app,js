@@ -1,0 +1,28 @@
+const menuToggle = document.querySelector('.navbar__toggle');
+const mobileMenu = document.querySelector('.menu-container');
+const menuOverlay = document.querySelector('.overlay');
+const mobileLinks = document.querySelectorAll('.mobile__links');
+
+
+
+menuToggle.addEventListener('click', toggleMenu);
+document.addEventListener('click', closeMenu);
+for (let i = 0; i < mobileLinks.length; i++) {
+    mobileLinks[i].addEventListener('click', (e) => {
+        e.target.classList.toggle('is-active');
+    });
+}
+
+
+
+function closeMenu(e){
+    if (menuToggle.classList.contains('is-active') && e.target == menuOverlay) {
+            toggleMenu();
+    }
+}
+
+function toggleMenu(e) {
+    menuToggle.classList.toggle('is-active');
+    mobileMenu.classList.toggle('open');
+    menuOverlay.classList.toggle('open');
+}
